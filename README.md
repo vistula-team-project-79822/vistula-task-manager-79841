@@ -1,4 +1,4 @@
-# Vistula Task Manager
+# Task Manager
 
 A browser-based task manager for the Vistula University team assignment. The application uses the Supabase REST API and supports public create, read, update and delete operations on the `tasks` table.
 
@@ -13,7 +13,7 @@ A browser-based task manager for the Vistula University team assignment. The app
 
 - `index.html` contains the responsive user interface.
 - `app.js` calls the Supabase REST API and implements CRUD operations.
-- `config.json` contains only the project URL and publishable key.
+- `config.json` contains the project URL, publishable key and required `tasks` table name.
 - `README.md` documents the project and collaboration workflow.
 
 ## Data model
@@ -50,6 +50,8 @@ Each student keeps a separate `vistula-task-manager` repository and a separate S
 4. Student A reviews and merges the second pull request.
 
 This repository belongs only to student `79841`. A partner must sign in to their own GitHub and Supabase accounts before any work is done in their repository.
+
+The two collaboration Pull Request links will be added here after both students complete and merge the required contributions. The repository owner must not create `contribution.html` or `contribution.json` directly.
 
 ## Local use
 

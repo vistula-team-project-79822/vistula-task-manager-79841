@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A small task manager powered by the Supabase REST API.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://vuqcmmgozrcangvfeilb.supabase.co; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'self'">
-  <title>Vistula Task Manager</title>
+  <title>Task Manager</title>
   <style>
     :root {
       color-scheme: light;
@@ -122,7 +122,7 @@
       list-style: none;
     }
 
-    .task {
+    .task-item {
       display: grid;
       grid-template-columns: auto 1fr auto;
       gap: 14px;
@@ -133,9 +133,10 @@
       background: var(--paper);
     }
 
-    .task h2 { margin: 0 0 4px; font-size: 1rem; }
-    .task p { margin: 0; color: var(--muted); line-height: 1.45; }
-    .task.completed h2 { text-decoration: line-through; color: var(--muted); }
+    .task-item h2 { margin: 0 0 4px; font-size: 1rem; }
+    .task-item p { margin: 0; color: var(--muted); line-height: 1.45; }
+    .task-item.completed h2 { text-decoration: line-through; color: var(--muted); }
+    .task-status { margin-top: 6px !important; font-size: 0.82rem; font-weight: 700; }
     .task-actions { display: flex; gap: 8px; }
     .toggle { min-width: 42px; padding: 0; font-size: 1.15rem; }
     .empty { padding: 28px 0 10px; text-align: center; color: var(--muted); }
@@ -143,7 +144,7 @@
     @media (max-width: 680px) {
       main { padding-top: 32px; }
       form { grid-template-columns: 1fr; }
-      .task { grid-template-columns: auto 1fr; }
+      .task-item { grid-template-columns: auto 1fr; }
       .task-actions { grid-column: 2; flex-wrap: wrap; }
     }
   </style>
@@ -151,8 +152,8 @@
 <body>
   <main>
     <header>
-      <h1>Vistula Task Manager</h1>
-      <p>Create, update and finish tasks stored in Supabase.</p>
+      <h1>Task Manager</h1>
+      <p>Vistula student ID: <strong id="student-id">79841</strong></p>
     </header>
 
     <section class="panel" aria-labelledby="task-form-title">
@@ -160,17 +161,18 @@
       <form id="task-form">
         <label>
           Title
-          <input id="title" name="title" maxlength="120" required autocomplete="off">
+          <input id="task-title" name="title" maxlength="120" required autocomplete="off">
         </label>
         <label>
           Description
-          <input id="description" name="description" maxlength="500" autocomplete="off">
+          <input id="task-description" name="description" maxlength="500" autocomplete="off">
         </label>
-        <button class="primary" type="submit">Add task</button>
+        <button id="task-submit" class="primary" type="submit">Add task</button>
       </form>
 
-      <p id="status" class="status" role="status" aria-live="polite">Loading tasks…</p>
+      <p id="status-message" class="status" role="status" aria-live="polite">Loading tasks…</p>
       <ul id="task-list" aria-label="Tasks"></ul>
+      <p><a id="contribution-link" href="contribution.html">Open team contribution</a></p>
     </section>
   </main>
 
